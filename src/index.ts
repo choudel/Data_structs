@@ -1,1 +1,2 @@
-console.log('hello')
+import './max_val'
+
