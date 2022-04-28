@@ -1,2 +1,3 @@
-import './max_val'
+import './max_val';
+import './bubble_sort';
 
