@@ -1,40 +1,36 @@
 
-class Node<T>{
-  next: T|null;
-  data: T;
-    constructor(data:T,next: Node<T>|null){
-        this.data=data;
-        this.next=null;
-    }
-    getData(){
-        return this.data;
+class Node<T> {
+    public item: T | null;
+    public next: Node<T> | null;
+
+    public constructor(item: T | null = null) {
+        this.item = item;
+        this.next = null;
     }
 }
+class LinkedList<T> {
+    private head: Node<T>;
+    private tail: Node<T>;
 
-class LinkedList <T> {
-    head:Node<T> | null=null;
-    tail:Node<T> | null=null;
-    init():T{
-        this.head = new Node("sanFrancisco",null);
-        var nodeOran =new Node("oran",null);
-        this.next= nodeOran;
-        var nodeChlef = new Node("chlef",null);
-        nodeOran.next= nodeChlef;
-        this.tail = new Node("alger",null);
-        nodeChlef.next=this.tail;
-
-        return this.head;
+    constructor() {
+        this.head = new Node<T>();
+        this.tail = new Node<T>();
+        this.head.next = this.tail;
     }
-    print(node:Node<T>):void{
-        var p =node;
-        while(p!=null){
-            var data=p.getData();
-            console.log(data + '=>');
-            p=p.next;
-        }
+    public isEmpty(): boolean {
+        return this.head.next === this.tail;
+    }
+    public insertFirst(item: T): void {
 
+        const newNode = new Node<T>(item);
+        if (this.isEmpty()) {
+            this.tail=newNode}else{newNode.next = this.head.next;
+                this.head.next = newNode;}
+        
     }
 }
-var linkedList= new LinkedList();
-var head: LinkedList<string> = linkedList.init();
-linkedList.print(head);
+const linked=new LinkedList();
+linked.insertFirst("larry");
+linked.insertFirst(5);
+linked.insertFirst("pony");
+console.log(linked)
