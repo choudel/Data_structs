@@ -1,18 +1,21 @@
 class Team {
-    name:string;
-    constructor(name:string){
-        this.name=name;
+    players: string[];
+    name: string;
+    constructor(name: string, players: string[]) {
+        this.name = name;
+        this.players = players;
     }
     generateLineup() {
-        return "lineup will go here";
+        return this.players.join(", ")
     }
 }
+const astroplayers=["altuve","socratis"]
+const astros = new Team("Astros", astroplayers);
 
-const astros = new Team("Astros");
-
-//console.log(astros.generateLineup());
+console.log(astros.generateLineup());
 console.log(astros.name)
 
-const bluJays = new Team("Blue Jays");
-//console.log(bluJays.generateLineup());
+const bluJaysplayers=["coco","somi"]
+const bluJays = new Team("Blue Jays",bluJaysplayers);
+console.log(bluJays.generateLineup());
 console.log(bluJays.name)
