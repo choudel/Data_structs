@@ -117,12 +117,45 @@
 
         return i
     }
-    
+    removeFront():T{
+        if (!this.list) throw new Error("empty list")
+        const val = this.list.head.val
+        if (this.list.head.next){
+            this.list.head.next.prev=null
+            this.list.head = this.list.head.next
+            this.list.size -=1
+        }
+        else{
+            this.list = undefined
+        }
+        return val
+    }
+    removeback():T{
+        if (!this.list) throw new Error("empty list")
+        const val = this.list.tail.val
+        if (this.list.tail.prev){
+            this.list.tail.prev.next=null
+            this.list.tail = this.list.tail.prev
+            this.list.size -=1
+        }
+        else{
+            this.list = undefined
+        }
+        return val
+    }
  }
 
 
  const listi= new LinkedList<string>();
  listi.addFront("hello")
+ listi.addBack("happy dad")
+ listi.addBack("lo siento")
  listi.addFront("encore hello")
+ console.log(listi.indexOf("lo siento"))
+
+ listi.addBack("happy dad")
  console.log(listi.size())
+ listi.removeFront()
+ console.log(listi.size())
+ listi.addBack("happy dad")
  console.log(listi)
