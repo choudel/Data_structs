@@ -9,25 +9,29 @@ class Node<T> {
     }
 }
 class LinkedList<T> {
-    private head: Node<T>;
-    private tail: Node<T>;
+    private head: Node<T>|null;
+    private tail: Node<T>|null;
 
     constructor() {
-        this.head = new Node<T>();
-        this.tail = new Node<T>();
-        this.head.next = this.tail;
+        this.head = null;
+        this.tail = null;
     }
     public isEmpty(): boolean {
-        return this.head.next === this.tail;
+        if(!this.head&&!this.tail){return true}
+        return false
     }
     public insertFirst(item: T): void {
-
         const newNode = new Node<T>(item);
         if (this.isEmpty()) {
-            this.tail=newNode}else{newNode.next = this.head.next;
-                this.head.next = newNode;}
+            this.head=newNode
+            this.tail=newNode
+            this.head.next=this.tail
+        }
+            else{
+                newNode.next=this.head
+                this.head=newNode
         
-    }
+    }}
 }
 const linked=new LinkedList();
 linked.insertFirst("larry");

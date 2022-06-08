@@ -1,3 +1,5 @@
+import { type } from "os"
+
 class node<T> {
     next: node<T>|undefined
     prev: node<T>|undefined
@@ -8,10 +10,10 @@ class node<T> {
         this.prev=undefined
     }
 }
-class LinkedListi<T> extends node<T>{
+class LinkedListi<T>{
 
-    head: LinkedListi<T>|node<T>|undefined
-    tail: LinkedListi<T>|node<T>|undefined
+    head: node<T>|undefined;
+    tail: node<T>|undefined;
     constructor(){
         this.head=undefined
         this.tail=undefined
@@ -25,10 +27,17 @@ class LinkedListi<T> extends node<T>{
         }else{
             this.head.prev=newnode
             newnode.next=this.head
+            this.head=newnode
 
         }     
-            
-        
+                    
     }
 
 }
+
+const silsila = new LinkedListi<string>()
+silsila.addToFront('third')
+silsila.addToFront('second')
+silsila.addToFront('first')
+
+console.log(silsila);
