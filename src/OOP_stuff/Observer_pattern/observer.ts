@@ -1,0 +1,3 @@
+class Subject{
+    private observers= [];
+}
